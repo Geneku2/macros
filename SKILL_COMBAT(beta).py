@@ -25,24 +25,12 @@ print("LOADED! PRESS \"l\" TO CANCEL CYCLE WHEN RUNNING!!!")
 
 def walkingPattern():
     while True:
-        #walks to the left, then to the right covering 2 rows, 2 times
-        for i in range(0,2):
-            mCont.press(mButton.left)
-            keyboard.keyDown("d")
-            time.sleep(17.5)
-            keyboard.keyUp("d")
-            mCont.press(mButton.left)
-            keyboard.keyDown("a")
-            time.sleep(17.5)
-            keyboard.keyUp("a")
-
         #sets spawn and warps home in case of disconnect
-        keyboard.press("t")
-        kCont.type("/sethome")
-        keyboard.press("enter")
-        keyboard.press("t")
-        kCont.type("/is")
-        keyboard.press("enter")
+        keyboard.keyDown("s")
+
+        #restarts process every 3 minutes in case some shit happens
+        time.sleep(180)
+        keyboard.keyUp("s")
 
 mCont = mController()
 kCont = kController()
@@ -51,5 +39,6 @@ miningThread = threading.Thread(target=walkingPattern, args=(), daemon=True)
 miningThread.start()
 
 while not quit.quit_pressed:
-    pass
+    mCont.move(-10,0)
+    time.sleep(0.1);
     

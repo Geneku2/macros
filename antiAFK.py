@@ -26,31 +26,41 @@ mCont = mController()
 
 golemHat = str(input("Golem Hat On (y)? ")) == "y"
 print("LOADING...")
-time.sleep(3)
-print("LOADED! PRESS \"p\" TO CANCEL CYCLE WHEN RUNNING!!!")
+print("3")
+time.sleep(1)
+print("2")
+time.sleep(1)
+print("1")
+time.sleep(1)
+print("LOADED! PRESS \"L\" TO CANCEL CYCLE WHEN RUNNING!!!")
 
 if golemHat:
     hat = threading.Thread(target=doGolemHat, args=(), daemon=True)
     hat.start()
 
-keyboard.keyDown("alt") #sneak
+#keyboard.keyDown("alt") #sneak
 
 #actual anti-afk stuff
 while not quit.quit_pressed:
+    keyboard.keyDown("alt")
     keyboard.keyDown("w")
+    time.sleep(0.125)
     keyboard.keyUp("w")
-    keyboard.keyDown("s")
-    keyboard.keyUp("s")
+    keyboard.keyUp("alt")
 
-    for i in range(0,8):
+    keyboard.keyDown("s")
+
+    for i in range(0,20):
         mCont.move(0,-1)
         time.sleep(0.01)
 
-    for i in range(0,8):
+    for i in range(0,20):
         mCont.move(0,1)
         time.sleep(0.01)
 
     time.sleep(1.5)
+    keyboard.keyUp("s")
+   #keyboard.keyDown("alt")
 
 keyboard.keyUp("alt")
 print("CYCLE ENDED")

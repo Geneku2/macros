@@ -21,25 +21,33 @@ print(2)
 time.sleep(1)
 print(1)
 time.sleep(1)
-print("LOADED! PRESS \"p\" TO CANCEL CYCLE WHEN RUNNING!!!")
+print("LOADED! PRESS \"l\" TO CANCEL CYCLE WHEN RUNNING!!!")
 
 def mineCobble():
     while True:
-        mCont.press(mButton.left)
         keyboard.keyDown("s")
-        
-        time.sleep(10)
+        #keyboard.keyDown("alt")
+        #keyboard.keyUp("alt")
+
+        oldtime = datetime.now()
+
+        while(datetime.now() - oldtime).total_seconds() < 1200: #was 1200
+            mCont.press(mButton.left)
+            time.sleep(60)
+            
+            
         keyboard.keyUp("s")
         mCont.release(mButton.left)
 
         keyboard.press("t")
-        kCont.type("/hub")
+        kCont.type("/warp hub")
         keyboard.press("enter")
         time.sleep(10)
+
         keyboard.keyDown("s")
-        time.sleep(6)
+        time.sleep(7)
         keyboard.keyUp("s")
-        time.sleep(1)
+        time.sleep(3)
 
 mCont = mController()
 kCont = kController()
@@ -47,6 +55,6 @@ kCont = kController()
 miningThread = threading.Thread(target=mineCobble, args=(), daemon=True)
 miningThread.start()
 
-while not quit.p_pressed:
+while not quit.quit_pressed:
     pass
     
