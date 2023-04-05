@@ -16,53 +16,41 @@ from pynput import mouse
 import time
 
 # escape listener
-import quitListener as quit
-
-import threading
+import SKILL_mining_tiddleListener as tiddle
 
 mCont = mController()
 kCont = kController()
 
 def resetPos():
     keyboard.keyDown("a")
-    time.sleep(4.9)
+    time.sleep(4.8)
     keyboard.keyUp("a")
 
 def mine():
-    drill = True
-
-    times = (0.33,0.41,0.45,0.46,0.42,0.44,0.44)
+    times = (0.21,0.24,0.31,0.27,0.29,0.27,0.27)
 
     for i in range(0,len(times)):
         keyboard.keyDown("d")
         time.sleep(times[i])
         keyboard.keyUp("d")
-        time.sleep(1.25 if drill else 1.4)
-
-def mainPart():
-    while True:
-        resetPos() #set to default posdition
-        mine()
+        time.sleep(2.5)
 
 print("LOADING...")
-macro = threading.Thread(target=mainPart, args=(), daemon=True)
+
 time.sleep(3)
 
-print("LOADED! PRESS \"l\" TO CANCEL CYCLE WHEN RUNNING!!!")
+print("LOADED! PRESS \"`\" TO CANCEL CYCLE WHEN RUNNING!!!")
 
 keyboard.keyDown("alt") #perma-sneak
 mCont.press(mButton.left) #perma-mine
-macro.start()
 
-while not quit.quit_pressed:
-    time.sleep(1)
+while not tiddle.tiddle_pressed:
+    resetPos() #set to default posdition
+    mine()
 
-keyboard.keyUp("d")
-keyboard.keyUp("a")
-keyboard.keyUp("alt")
-keyboard.keyUp("d")
-keyboard.keyUp("a")
 mCont.release(mButton.left)
+time.sleep(0.2)
+keyboard.keyUp("alt")
 print("CYCLE ENDED")
 
 

@@ -113,14 +113,14 @@ streamRecThread.start()
 
 antiAFKThread = threading.Thread(target=antiAFK, args=(), daemon=True)
 
-print("Waiting for User to Boot Application - Press \"r\" When Ready to Run")
-while not quit.r_pressed:
+print("Waiting for User to Boot Application - Press \"8\" When Ready to Run")
+while not quit.pressed_8:
     time.sleep(1)
 
 antiAFKThread.start()
 keyboard.press("3")
 mCont.click(mButton.right, 1)
-while not quit.p_pressed:
+while not quit.pressed_9:
     if not silence:
         mCont.click(mButton.right, 1)
         time.sleep(0.1)
