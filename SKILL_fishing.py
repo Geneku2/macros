@@ -40,7 +40,7 @@ for i in range(p.get_device_count()):
     dev = p.get_device_info_by_index(i)
     if (dev['hostApi'] > 0):
         break
-    print("Index: " + str(i) + " | Name: " + dev["name"] + " , hostAPI: " + str(dev['hostApi']))
+    print("Index: " + str(i) + " | Name: " + dev["name"] + " , hostAPI: " + str(dev['hostApi']) + " , Max Channels: " + str(dev['maxInputChannels']))
     #Sound Channel is required to be the StereoMix with API 0
     if (dev['name'] == 'Stereo Mix (Realtek(R) Audio)' and dev['hostApi'] == 0):
         dev_index = dev['index']
@@ -63,7 +63,7 @@ print(2)
 time.sleep(1)
 print(1)
 time.sleep(1)
-print("LOADED! PRESS \"p\" TO CANCEL CYCLE WHEN RUNNING!!!")
+print("LOADED! PRESS \"9\" TO CANCEL CYCLE WHEN RUNNING!!!")
 #frames = []
 
 silence = True

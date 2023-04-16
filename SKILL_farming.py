@@ -33,10 +33,10 @@ back_walk_time = 0
 
 mode = crops.cane()
 
-set_ = False
+set_ = 0
 def setspawn():
         global set_
-        if not set_:
+        if set_ == 0:
             #sets spawn and warps home in case of disconnect
             keyboard.press("t")
             kCont.type("/sethome")
@@ -44,13 +44,15 @@ def setspawn():
             keyboard.press("t")
             kCont.type(mode.ret_command)
             keyboard.press("enter")
-            set_ = True
         else:
             for i in range(2):
                 keyboard.press("t")
                 keyboard.press("up")
                 keyboard.press("up")
                 keyboard.press("enter")
+            if set_ > 20:
+                set_ = 0
+        set_ = set_ + 1
 
 def walkingPattern():
     mCont.press(mButton.left)
