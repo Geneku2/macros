@@ -253,10 +253,10 @@ print(2)
 sleep(1)
 print(1)
 sleep(1)
-print("LOADED! PRESS \"9\" TO CANCEL CYCLE WHEN RUNNING!!!")
+print("LOADED!")
 
 miningThread = threading.Thread(target=do_foraging, args=(), daemon=True)
 miningThread.start()
 
-while not quit.pressed_9:
+while not quit.QUIT_PRESSED:
     pass

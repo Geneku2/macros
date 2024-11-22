@@ -16,7 +16,7 @@ from pynput import mouse
 import time
 
 # escape listener
-import SKILL_mining_tiddleListener as tiddle
+import quitListener as quit
 
 mCont = mController()
 kCont = kController()
@@ -44,7 +44,7 @@ print("LOADED! PRESS \"`\" TO CANCEL CYCLE WHEN RUNNING!!!")
 keyboard.keyDown("alt") #perma-sneak
 mCont.press(mButton.left) #perma-mine
 
-while not tiddle.tiddle_pressed:
+while not quit.QUIT_PRESSED:
     resetPos() #set to default posdition
     mine()
 

@@ -1,23 +1,25 @@
 from pynput import keyboard
 
-pressed_8 = False
-pressed_9 = False
+print("READY: (8)\nQUIT: (9)")
+
+READY_PRESSED = False
+QUIT_PRESSED = False
 
 def on_press(key):
-    global pressed_8
-    global pressed_9
+    global READY_PRESSED
+    global QUIT_PRESSED
 
     try:
         if(str(format(key.char)) == "9"):
-            pressed_9 = True
-            print("REQUEST DETECTED, ENDING AFTER CURRENT CYCLE!!")
+            QUIT_PRESSED = True
+            print("<ending after current cycle>")
     except AttributeError:
         pass
 
     try:
         if(str(format(key.char)) == "8"):
-            pressed_8 = True
-            print("APPLICATION READY DETECTED")
+            READY_PRESSED = True
+            print("<starting>")
     except AttributeError:
         pass
 

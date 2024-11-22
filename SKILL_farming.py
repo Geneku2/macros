@@ -25,7 +25,7 @@ print(2)
 time.sleep(1)
 print(1)
 time.sleep(1)
-print("LOADED! PRESS \"9\" TO CANCEL CYCLE WHEN RUNNING!!!")
+print("LOADED!")
 
 
 front_walk_time = 0
@@ -72,6 +72,6 @@ def walkingPattern():
 miningThread = threading.Thread(target=walkingPattern, args=(), daemon=True)
 miningThread.start()
 
-while not quit.pressed_9:
+while not quit.QUIT_PRESSED:
     pass
     

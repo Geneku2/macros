@@ -27,8 +27,8 @@ print("LOADED! PRESS \"l\" TO CANCEL CYCLE WHEN RUNNING!!!")
 kCont = kController()
 
 
-while not quit.p_pressed:
-    for i in range(1516,10000):
+while not quit.QUIT_PRESSED:
+    for i in range(7502,10000):
         kCont.type(str(i))
         keyboard.press("enter")
         time.sleep(3)

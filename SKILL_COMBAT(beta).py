@@ -21,7 +21,7 @@ print(2)
 time.sleep(1)
 print(1)
 time.sleep(1)
-print("LOADED! PRESS \"l\" TO CANCEL CYCLE WHEN RUNNING!!!")
+print("LOADED!")
 
 def walkingPattern():
     while True:
@@ -38,7 +38,7 @@ kCont = kController()
 miningThread = threading.Thread(target=walkingPattern, args=(), daemon=True)
 miningThread.start()
 
-while not quit.quit_pressed:
+while not quit.QUIT_PRESSED:
     mCont.move(-10,0)
     time.sleep(0.1);
     

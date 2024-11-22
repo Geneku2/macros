@@ -21,7 +21,7 @@ print(2)
 time.sleep(1)
 print(1)
 time.sleep(1)
-print("LOADED! PRESS \"p\" TO CANCEL CYCLE WHEN RUNNING!!!")
+print("LOADED!")
 
 def mineCobble():
     while True:
@@ -47,6 +47,6 @@ kCont = kController()
 miningThread = threading.Thread(target=mineCobble, args=(), daemon=True)
 miningThread.start()
 
-while not quit.p_pressed:
+while not quit.QUIT_PRESSED:
     pass
     
